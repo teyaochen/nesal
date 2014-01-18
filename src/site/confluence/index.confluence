@@ -1,0 +1,71 @@
+h1. Overview
+
+This is the project site for *Non\-Embedded Smart Agent for Licensing (NESAL)*.
+
+The Non\-Embedded Smart Agent for Licensing provides API to work with Cisco's software products. The goal is to make licensing a transparent/inherited/built\-in feature in all Cisco software products. 
+
+The Smart Agent will be made available as either a source component or a JAR package with a set of class library and resource files.
+
+The API are divided into two packages: com.cisco.nesal.agent and com.cisco.nesal.plugin:
+
+h2. 1. Package com.cisco.nesal.agent
+
+The classes and interfaces in this package are divided into the following categories. They are available for software products to use.
+
+h4. +Admin & Management API+
+  
+{code}
+    com.cisco.nesal.agent.SmartAgent
+    com.cisco.nesal.agent.SmartAgentInfo
+    com.cisco.nesal.agent.SmartAgentException
+    com.cisco.nesal.agent.SmartAgentStatusCode
+    com.cisco.nesal.agent.Certificate
+    com.cisco.nesal.agent.UDI
+{code}
+
+h4. +Entitlement API+
+
+{code}
+    com.cisco.nesal.agent.Entitlement
+    com.cisco.nesal.agent.EntitlementEnforceMode
+    com.cisco.nesal.agent.IEntitlementNotificationListener
+{code}
+
+h4. +Agent Notification API+
+
+{code}
+    com.cisco.nesal.agent.ISmartAgentNotificationListener
+    com.cisco.nesal.agent.SmartAgentNotification
+{code}
+
+h2. 2. Package com.cisco.nesal.plugin
+
+The classes and interfaces in this package are divided into the following categories. The interfaces in this package are specification of the plugins that software products have to provide the implementation.
+
+h4. +Communication API+
+
+{code}
+    com.cisco.nesal.plugin.ICommunication
+    com.cisco.nesal.plugin.DefaultCommunication
+{code}
+
+h4. +Platform Dependent API+
+
+{code}
+    com.cisco.nesal.plugin.IPlatformDependent
+    com.cisco.nesal.plugin.DefaultPlatformDependent
+{code}
+
+h4. +Platform Independent API+
+
+{code}
+    com.cisco.nesal.plugin.IPlatformIndependent
+    com.cisco.nesal.plugin.DefaultPlatformIndependent
+{code}
+
+h4. +Platform Independent Certificate & Crypto API+
+
+{code}
+    com.cisco.nesal.plugin.ICrypto
+    com.cisco.nesal.plugin.DefaultCrypto
+{code}

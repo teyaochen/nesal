@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<faqs id="General FAQ">
+  <part id="General">
+    <faq id="how">
+      <question>How to pronounce NESAL?</question>
+      <answer>
+        <p>
+          NESAL is pronounced as "nee-sol".
+        </p>
+      </answer>
+    </faq>
+    <faq id="where">
+      <question>Where can I download NESAL package?</question>
+      <answer>
+        <p>
+          The download information will be updated when it is available.  
+        </p>
+      </answer>
+    </faq>
+  </part>
+</faqs>

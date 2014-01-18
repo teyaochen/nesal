@@ -1,0 +1,48 @@
+h1. Development Environemnt
+
+h2. 1) Linux Setup
+
+There are two approaches to establish and access Linux environment from your  computer. Approach #1 listed in this section is preferred for it allows you to use the Linux with super user privilege.
+
+h3. 1a) Approach #1: Linux Development Server (ADS or LDS)
+
+* Download a 32-bits Ubuntu Linux OS image from [Ubuntu Download|http://www.ubuntu.com/download/desktop].
+
+* Download VMWare Player from [VMWare Download|https://www.vmware.com/support/download-player.html] and install it on your computer.
+
+* Follow instructions to install Ubuntu as guest OS on VMWare Player: [Install Ubuntu|http://partnerweb.vmware.com/GOSIG/Ubuntu_12_04_LTS.html]
+
+h3. 1b) Approach #2: Linux Guest OS on VMWare
+
+Refer to [Smart Agent Development Environment Page|http://wikicentral.cisco.com/display/ELO/Client+Development#ClientDevelopment-LinuxVM%28ADS%29] for information about requesting ADS account and using VNC client to connect to ADS server.
+
+h2. 2) Workspace Setup
+
+* Download [Maven 3|http://maven.apache.org/index.html] and install it on Linux.
+
+* Download [JRuby 1.7.9|http://www.jruby.org/download] and install it on Linux.
+
+* Download [jrubycForMaven Plugin|https://github.com/fernandezpablo85/jrubycForMaven/archive/master.zip] and run "mvn clean install" to install the plugin in your local Maven repository.
+
+* Pull the NESAL source code from Git repository. (TBD) 
+
+* Run the following commands to start a build of NESAL package.
+
+{code}
+cd nesal
+mvn install
+{code}
+
+
+h2. 3) IDE Setup
+
+* Install Eclipse for Java EE
+
+* Import Maven project in Eclipse
+
+h2. 4) Additional Notes for Ruby
+
+* Ruby source code should be placed in nesal/src/main/ruby directory and will be compiled to Java source code after running "mvn compile".
+
+
+

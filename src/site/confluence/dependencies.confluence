@@ -1,0 +1,14 @@
+h1. Project Dependencies
+
+The project depends on the following components:
+ 
+h2. 1) Call Home Client
+
+The transport mechanism will utilize a customized Java version of Call\-Home Client library 
+that will be provided by Call-Home team.
+
+h2. 2) CiscoSSL
+
+When communicating with the Smart Licensing back-end, the Smart Agent signs all outgoing messages and verify all incoming messages; as such, it needs a crypto library.  CiscoSSL, maintained by the Common Crypto engineering team, is the preferred crypto library.  
+
+

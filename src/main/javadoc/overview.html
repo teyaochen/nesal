@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=windows-1252" http-equiv="content-type">
+    <title>nesal-overview</title>
+  </head>
+  <body>
+    <p> The Non-Embedded Smart Agent for Licensing (NESAL) provides API to work
+      with Cisco's software products. The goal is to make licensing a
+      transparent/inherited/built-in feature in all Cisco software products. <br>
+      <br>
+      The Smart Agent will be made available as either a source component or a
+      JAR package with a set of class library and resource files.<br>
+    </p>
+    <p>The API are divided into two packages: com.cisco.nesal.agent and
+      com.cisco.nesal.plugin:</p>
+    <h2>1. Package com.cisco.nesal.agent </h2>
+    <p> The classes and interfaces in this package are divided into the
+      following categories. They are available for software products to use.</p>
+    <h4>Admin &amp; Management API</h4>
+    <ul>
+      <li><span style="font-family: monospace;">com.cisco.nesal.agent.SmartAgent</span></li>
+      <span style="font-family: monospace;"> </span>
+      <li><span style="font-family: monospace;">com.cisco.nesal.agent.SmartAgentInfo</span></li>
+      <span style="font-family: monospace;"> </span>
+      <li><span style="font-family: monospace;">com.cisco.nesal.agent.SmartAgentException</span></li>
+      <span style="font-family: monospace;"> </span>
+      <li><span style="font-family: monospace;">com.cisco.nesal.agent.SmartAgentStatusCode</span></li>
+      <span style="font-family: monospace;"> </span>
+      <li><span style="font-family: monospace;">com.cisco.nesal.agent.Certificate</span></li>
+      <span style="font-family: monospace;"> </span>
+      <li><span style="font-family: monospace;">com.cisco.nesal.agent.UDI </span></li>
+    </ul>
+    <h4> Entitlement API </h4>
+    <ul>
+      <li><span style="font-family: monospace;">com.cisco.nesal.agent.Entitlement</span></li>
+      <span style="font-family: monospace;"> </span>
+      <li><span style="font-family: monospace;">com.cisco.nesal.agent.EntitlementEnforceMode</span></li>
+      <span style="font-family: monospace;"> </span>
+      <li><span style="font-family: monospace;">com.cisco.nesal.agent.IEntitlementNotificationListener</span></li>
+    </ul>
+    <h4> Agent Notification API </h4>
+    <ul>
+      <li><span style="font-family: monospace;">com.cisco.nesal.agent.ISmartAgentNotificationListener</span></li>
+      <span style="font-family: monospace;"> </span>
+      <li><span style="font-family: monospace;">com.cisco.nesal.agent.SmartAgentNotification</span></li>
+    </ul>
+    <h2>2. Package com.cisco.nesal.plugin </h2>
+    <p>The classes and interfaces in this package are divided into the following
+      categories. The interfaces in this package are specification of the
+      plugins that&nbsp;software products have to provide the implementation. </p>
+    <h4> Communication API </h4>
+    <ul>
+      <li><span style="font-family: monospace;">com.cisco.nesal.plugin.ICommunication</span></li>
+      <span style="font-family: monospace;"> </span>
+      <li><span style="font-family: monospace;">com.cisco.nesal.plugin.DefaultCommunication
+          </span></li>
+    </ul>
+    <h4> Platform Dependent API </h4>
+    <ul>
+      <li><span style="font-family: monospace;">com.cisco.nesal.plugin.IPlatformDependent</span></li>
+      <span style="font-family: monospace;"> </span>
+      <li><span style="font-family: monospace;">com.cisco.nesal.plugin.DefaultPlatformDependent
+          </span></li>
+    </ul>
+    <h4> Platform Independent API </h4>
+    <ul>
+      <li><span style="font-family: monospace;">com.cisco.nesal.plugin.IPlatformIndependent</span></li>
+      <span style="font-family: monospace;"> </span>
+      <li><span style="font-family: monospace;">com.cisco.nesal.plugin.DefaultPlatformIndependent
+          </span></li>
+    </ul>
+    <h4> Platform Independent Certificate &amp; Crypto API </h4>
+    <ul>
+      <li><span style="font-family: monospace;">com.cisco.nesal.plugin.ICrypto</span></li>
+      <span style="font-family: monospace;"> </span>
+      <li><span style="font-family: monospace;">com.cisco.nesal.plugin.DefaultCrypto</span></li>
+    </ul>
+  </body>
+</html>

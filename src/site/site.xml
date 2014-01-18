@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="Non-Embedded Smart Agent for Licensing">
+	<skin>
+		<groupId>org.apache.maven.skins</groupId>
+		<artifactId>maven-fluido-skin</artifactId>
+		<version>1.3.0</version>
+	</skin>
+	<bannerLeft>
+		<name>Non-Embedded Smart Agent for Licensing</name>
+	</bannerLeft>
+	<bannerRight>
+		<name>Smart Licensing</name>
+		<src>images/DLO_logo.jpg</src>
+	</bannerRight>
+	<body>
+		<head>Java Smart Agent for Licensing</head>
+		<links>
+			<item name="DLO Engineering Home" href="http://wikicentral.cisco.com/display/ELO/Home" />
+		</links>
+		<menu name="Project Documentation">
+			<item name="Overview" href="index.html" />
+			<item name="Design Considerations" href="design-considerations.html" />
+			<item name="Design Diagrams" href="design-diagrams.html" />
+			<item name="API Docs" href="apidocs.html">
+				<item name="Java API" href="apidocs/index.html" />
+				<item name="Ruby API" href="under-construction.html" />
+				<item name="REST API" href="under-construction.html" />
+			</item>
+			<item name="Development Environment" href="dev-env.html" />
+			<item name="Project Schedule" href="proj-schedule.html" />
+			<item name="Dependencies" href="dependencies.html" />
+			<item name="Issue Tracking" href="issue-tracking.html" />
+			<item name="Project Team" href="project-team.html" />
+			<!-- <item name="Mailing list" href="mail-lists.html"/> -->
+			<item name="FAQ" href="faq.html" />
+		</menu>
+		<menu name="Other Information">
+			<item name="DLO Engineering Home" href="http://wikicentral.cisco.com/display/ELO/Home" />
+			<!-- <item name="DLO Home on IWE" href="http://iwe.cisco.com/web/engineering-licensing-office"/> -->
+		</menu>
+	</body>
+</project>

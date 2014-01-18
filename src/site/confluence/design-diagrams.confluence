@@ -1,0 +1,13 @@
+
+h2. 1. Class Diagram
+
+The following UML class diagram describes the structure of the system by showing the system's classes:
+
+!images/NESALClass.png|border=2!
+
+\\
+h2. 2. Deploy Diagram
+
+The following UML deployment diagram models the physical deployment of artifacts at the runtime:
+
+!images/NESALDeployment.png|border=2!
