@@ -3,9 +3,10 @@ package com.cisco.nesal.plugin;
 import java.security.MessageDigest;
 
 import com.cisco.nesal.agent.CSR;
+import com.cisco.nesal.agent.SmartAgentException;
 import com.cisco.nesal.agent.CSR.CSRFormat;
 import com.cisco.nesal.agent.Certificate;
-import com.cisco.nesal.agent.SmartAgentInfo.CertificateInfo;
+
 
 /**
  * This is the interface between the agent and the Crypto/Certificate services
@@ -48,14 +49,24 @@ public interface ICrypto {
      * @param rootCA
      *            The Root certificate to import into the trust store for
      *            validation of the trust chain of Node Certificate.
+     * 
+     * @throws SmartAgentException
+     *             The exception is thrown when error occurs in the operation.
+     *             getStatusCode() method in the exception will return the
+     *             status code.
      */
-    public void init(String rootCA);
+    public void init(String rootCA) throws SmartAgentException;
 
     /**
      * Shuts down Crypto. This will be called when the agent shuts down. it
      * should free any resources that were allocated.
+     * 
+     * @throws SmartAgentException
+     *             The exception is thrown when error occurs in the operation.
+     *             getStatusCode() method in the exception will return the
+     *             status code.
      */
-    public void shutdown();
+    public void shutdown() throws SmartAgentException ;
 
     /**
      * Creates a message signature.
@@ -73,9 +84,14 @@ public interface ICrypto {
      *            Hash algorithm to be used, one of MessageDigestAlgorithm.
      * 
      * @return The signature in String format.
+     * 
+     * @throws SmartAgentException
+     *             The exception is thrown when error occurs in the operation.
+     *             getStatusCode() method in the exception will return the
+     *             status code.
      */
     public String generateSignature(String key, String data,
-            MessageDigestAlgorithm algorithm);
+            MessageDigestAlgorithm algorithm) throws SmartAgentException;
 
     /**
      * Creates a Certificate Signing Request (CSR).
@@ -92,9 +108,14 @@ public interface ICrypto {
      * 
      * @return A CSR object which containss a public key and raw CSR string.
      * 
+     * 
+     * @throws SmartAgentException
+     *             The exception is thrown when error occurs in the operation.
+     *             getStatusCode() method in the exception will return the
+     *             status code.
      */
     public CSR getCSR(String udi, CSRFormat csrOutputFormat,
-                      MessageDigestAlgorithm algorithm);
+                      MessageDigestAlgorithm algorithm) throws SmartAgentException ;
 
     /**
      * Creates a message digest with the specified algorithm.
@@ -105,9 +126,14 @@ public interface ICrypto {
      *            The message digest algorithm to use (e.g., MD5, SHA256, etc).
      * 
      * @return The message digest.
+     * 
+     * @throws SmartAgentException
+     *             The exception is thrown when error occurs in the operation.
+     *             getStatusCode() method in the exception will return the
+     *             status code.
      */
     public MessageDigest hashMessage(String message,
-            MessageDigestAlgorithm algorithm);
+            MessageDigestAlgorithm algorithm) throws SmartAgentException ;
 
     /**
      * Parses a certificate.
@@ -117,8 +143,13 @@ public interface ICrypto {
      * @param cert
      *            The certificate to parse in any of the formats, e,g, DER, PEM.
      * @return A CertificateInfo object
+     * 
+     * @throws SmartAgentException
+     *             The exception is thrown when error occurs in the operation.
+     *             getStatusCode() method in the exception will return the
+     *             status code.
      */
-    public Certificate parseCertificate(String cert);
+    public Certificate parseCertificate(String cert) throws SmartAgentException;
 
     /**
      * Validates Node Certificate with the root CA.
@@ -142,9 +173,14 @@ public interface ICrypto {
      *            The private key stored in trust storage by caller is passed
      *            else will be null.
      * @return True if the cert is valid; false otherwise.
+     * 
+     * @throws SmartAgentException
+     *             The exception is thrown when error occurs in the operation.
+     *             getStatusCode() method in the exception will return the
+     *             status code.
      */
     public boolean validateNodeCertificate(String cert, String subCA,
-            String privateKey);
+            String privateKey) throws SmartAgentException ;
 
     /**
      * Validate a message signature Using the Crypto functions validate a
@@ -163,10 +199,16 @@ public interface ICrypto {
      *            The signature to validate
      * @param algorithm
      *            The message digest algorithm to be used while signing the CSR.
+     *            
      * @return True if the signature is valid; false otherwise.
+     * 
+     * @throws SmartAgentException
+     *             The exception is thrown when error occurs in the operation.
+     *             getStatusCode() method in the exception will return the
+     *             status code.
      */
     public boolean validateSignature(String cert, String data,
-            String signature, MessageDigestAlgorithm algorithm);
+            String signature, MessageDigestAlgorithm algorithm) throws SmartAgentException;
 
     /**
      * Validate Signing Certificate with the root CA.
@@ -180,7 +222,12 @@ public interface ICrypto {
      *            formats of DER, Base64, PEM.
      * 
      * @return True if the cert is valid; false otherwise.
+     * 
+     * @throws SmartAgentException
+     *             The exception is thrown when error occurs in the operation.
+     *             getStatusCode() method in the exception will return the
+     *             status code.
      */
-    public boolean validateSigningCertificate(String cert);
+    public boolean validateSigningCertificate(String cert) throws SmartAgentException;
 
 }

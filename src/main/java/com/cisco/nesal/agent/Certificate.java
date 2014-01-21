@@ -10,11 +10,22 @@ import java.util.List;
  * 
  */
 public class Certificate {
+    private String commonName;
     private String serialNumber;
     private List<SUDI> haSudiList;
     private int versionNumber;
     private Date issuedDate;
     private Date expiredDate;
+
+    
+    /**
+     * Gets the common name of the certificate.
+     *
+     * @return The common name of the certificate.
+     */
+    public String getCommonName() {
+        return commonName;
+    }
 
     /**
      * Gets the serial number.

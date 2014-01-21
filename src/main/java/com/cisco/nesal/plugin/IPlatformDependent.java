@@ -2,6 +2,7 @@ package com.cisco.nesal.plugin;
 
 import java.util.Locale;
 
+import com.cisco.nesal.agent.SmartAgentException;
 import com.cisco.nesal.agent.UDI;
 
 /**
@@ -62,7 +63,12 @@ public interface IPlatformDependent {
      * <p>
      * This is the last call made to the software product library. It will be
      * called if the agent is shutdown gracefully.
+     * 
+     * @throws SmartAgentException
+     *             The exception is thrown when error occurs in the operation.
+     *             getStatusCode() method in the exception will return the
+     *             status code.
      */
-    public void shutdown();
+    public void shutdown() throws SmartAgentException;
 
 }

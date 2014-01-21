@@ -50,7 +50,7 @@ public class RubySample extends RubyObject  {
             "x = RubySample.new\n" +
             "puts x(1,2)\n" +
             "").toString();
-        __ruby__.executeScript(source, "/home/tychen/nesal/src/main/ruby/sample.rb");
+        __ruby__.executeScript(source, "/home/tychen/GitForNESAL/nesal/src/main/ruby/sample.rb");
         RubyClass metaclass = __ruby__.getClass("RubySample");
         if (metaclass == null) throw new NoClassDefFoundError("Could not load Ruby class: RubySample");
         metaclass.setRubyStaticAllocator(RubySample.class);

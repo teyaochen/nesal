@@ -8,6 +8,7 @@ import java.security.MessageDigest;
 import com.cisco.nesal.agent.CSR;
 import com.cisco.nesal.agent.CSR.CSRFormat;
 import com.cisco.nesal.agent.Certificate;
+import com.cisco.nesal.agent.SmartAgentException;
 
 /**
  * This class provides the default reference implementation for ICrypto
@@ -23,114 +24,63 @@ public class DefaultCrypto implements ICrypto {
         // TODO Auto-generated constructor stub
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see com.cisco.nesal.plugin.ICrypto#init(java.lang.String)
-     */
     @Override
-    public void init(String rootCA) {
+    public void init(String rootCA) throws SmartAgentException {
         // TODO Auto-generated method stub
-
+        
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see com.cisco.nesal.plugin.ICrypto#shutdown()
-     */
     @Override
-    public void shutdown() {
+    public void shutdown() throws SmartAgentException {
         // TODO Auto-generated method stub
-
+        
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see com.cisco.nesal.plugin.ICrypto#generateSignature(java.lang.String,
-     * java.lang.String, com.cisco.nesal.plugin.MessageDigestAlgorithm)
-     */
     @Override
     public String generateSignature(String key, String data,
-            MessageDigestAlgorithm digestHash) {
+            MessageDigestAlgorithm algorithm) throws SmartAgentException {
         // TODO Auto-generated method stub
         return null;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see com.cisco.nesal.plugin.ICrypto#getCSR(java.lang.String,
-     * com.cisco.nesal.plugin.CSRFormat, com.cisco.nesal.plugin.MessageDigestAlgorithm)
-     */
     @Override
     public CSR getCSR(String udi, CSRFormat csrOutputFormat,
-            MessageDigestAlgorithm digestHash) {
+            MessageDigestAlgorithm algorithm) throws SmartAgentException {
         // TODO Auto-generated method stub
         return null;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see com.cisco.nesal.plugin.ICrypto#hashMessage(java.lang.String,
-     * com.cisco.nesal.plugin.MessageDigestAlgorithm)
-     */
     @Override
-    public MessageDigest hashMessage(String message, MessageDigestAlgorithm hashType) {
+    public MessageDigest hashMessage(String message,
+            MessageDigestAlgorithm algorithm) throws SmartAgentException {
         // TODO Auto-generated method stub
         return null;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see com.cisco.nesal.plugin.ICrypto#parseCertificate(java.lang.String)
-     */
     @Override
-    public Certificate parseCertificate(String cert) {
+    public Certificate parseCertificate(String cert) throws SmartAgentException {
         // TODO Auto-generated method stub
         return null;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see
-     * com.cisco.nesal.plugin.ICrypto#validateNodeCertificate(java.lang.String,
-     * java.lang.String, java.lang.String)
-     */
     @Override
     public boolean validateNodeCertificate(String cert, String subCA,
-            String privateKey) {
+            String privateKey) throws SmartAgentException {
         // TODO Auto-generated method stub
         return false;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see com.cisco.nesal.plugin.ICrypto#validateSignature(java.lang.String,
-     * java.lang.String, java.lang.String,
-     * com.cisco.nesal.plugin.MessageDigestAlgorithm)
-     */
     @Override
     public boolean validateSignature(String cert, String data,
-            String signature, MessageDigestAlgorithm digestHash) {
+            String signature, MessageDigestAlgorithm algorithm)
+            throws SmartAgentException {
         // TODO Auto-generated method stub
         return false;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see
-     * com.cisco.nesal.plugin.ICrypto#validateSigningCertificate(java.lang.String
-     * )
-     */
     @Override
-    public boolean validateSigningCertificate(String cert) {
+    public boolean validateSigningCertificate(String cert)
+            throws SmartAgentException {
         // TODO Auto-generated method stub
         return false;
     }

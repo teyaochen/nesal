@@ -46,11 +46,11 @@
 					</reportSet>
 				</reportSets>
 				<configuration>
-				<excludePackageNames>*.internal:*.idl</excludePackageNames>
-					<!-- Toggle the following 3 lines for either PDF only output  -->
-					<doclet>com.tarsec.javadoc.pdfdoclet.PDFDoclet</doclet>
-					<docletPath>${basedir}/lib/pdfdoclet-1.0.3-all.jar</docletPath>
-					<useStandardDocletOptions>false</useStandardDocletOptions>
+					<excludePackageNames>*.internal:*.idl</excludePackageNames>
+					<!-- Toggle the following 3 lines for either PDF only output -->
+<!-- 					<doclet>com.tarsec.javadoc.pdfdoclet.PDFDoclet</doclet> -->
+<!-- 					<docletPath>${basedir}/lib/pdfdoclet-1.0.3-all.jar</docletPath> -->
+<!-- 					<useStandardDocletOptions>false</useStandardDocletOptions> -->
 				</configuration>
 			</plugin>
 			<plugin>
@@ -147,6 +147,23 @@
 			<groupId>org.jruby</groupId>
 			<artifactId>jruby-complete</artifactId>
 			<version>1.7.9</version>
+		</dependency>
+		<dependency>
+			<groupId>org.squirrelframework</groupId>
+			<artifactId>squirrel-foundation</artifactId>
+			<version>0.2.4</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<version>1.9.5</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-all</artifactId>
+			<version>1.3</version>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 </project>

@@ -70,6 +70,8 @@ The followings are some options to consider:
 * Apache Commons SCXML \- [http://commons.apache.org/proper/commons\-scxml/]
 * UniMod \- [http://unimod.sourceforge.net/fsm\-framework.html]
 * Fettle \- [http://thehiflyer.github.io/Fettle/]
+* stateless4j \- [hhttp://code.google.com/p/stateless4j/]
+* squirrel\-foundation \- [https://github.com/hekailiang/squirrel]
 
 \\
 h2. 6) Ensure API Consistency with the Embedded Agent

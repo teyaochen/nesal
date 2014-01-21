@@ -19,24 +19,12 @@ public class DefaultCommunication implements ICommunication {
         // TODO Auto-generated constructor stub
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see com.cisco.nesal.plugin.ICommunication#init()
-     */
     @Override
     public void init() throws SmartAgentException {
         // TODO Auto-generated method stub
-
+        
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see
-     * com.cisco.nesal.plugin.ICommunication#sendMessage(com.cisco.nesal.plugin
-     * .MessageType, java.lang.String, java.lang.String)
-     */
     @Override
     public String sendMessage(MessageType messageType, String messageData,
             String idToken) throws SmartAgentException {
@@ -44,15 +32,11 @@ public class DefaultCommunication implements ICommunication {
         return null;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see com.cisco.nesal.plugin.ICommunication#shutdown()
-     */
     @Override
-    public void shutdown() {
+    public void shutdown() throws SmartAgentException {
         // TODO Auto-generated method stub
-
+        
     }
 
+    
 }

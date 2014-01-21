@@ -2,6 +2,8 @@ package com.cisco.nesal.plugin;
 
 import java.util.Locale;
 
+import com.cisco.nesal.agent.SmartAgentException;
+
 /**
  * This interface will be implemented by the software product so the agent can
  * get Platform Independent (PD) information.
@@ -66,6 +68,35 @@ public interface IPlatformIndependent {
     }
 
 //    /**
+//     * Has the software product finished initializing?
+//     * <p>
+//     * After the agent is enabled during the init sequence it will call this
+//     * function every 30 seconds until it returns true in the isInit parameter.
+//     * When true is returned the agent will assume the following:
+//     * <ul>
+//     * <li>all interfaces in the device are up and functioning so it can attempt
+//     * to contact the Cisco licensing receiver.
+//     * <li>the config has been parsed. This is important because the agent needs
+//     * to know if the SmartAgentEnable and SmartAgentIdTokenRegister are called
+//     * as a result of the config being parsed at boot time or because the user
+//     * used the CLI.
+//     */
+//    public void isInit();
+
+    /**
+     * Shuts down the PI interface to the agent.
+     * <p>
+     * This is the last call the agent will make before it shuts down to free
+     * any resources allocated by init method.
+     * 
+     * @throws SmartAgentException
+     *             The exception is thrown when error occurs in the operation.
+     *             getStatusCode() method in the exception will return the
+     *             status code.
+     */
+    public void shutdown() throws SmartAgentException;
+
+    //    /**
 //     * Initializes the PI interface to the agent.
 //     * <p>
 //     * The agent will call this during SmartAgent.init(). It will be called
@@ -87,30 +118,6 @@ public interface IPlatformIndependent {
      *         or cultural region.
      */
     public Locale getLocale();
-
-//    /**
-//     * Has the software product finished initializing?
-//     * <p>
-//     * After the agent is enabled during the init sequence it will call this
-//     * function every 30 seconds until it returns true in the isInit parameter.
-//     * When true is returned the agent will assume the following:
-//     * <ul>
-//     * <li>all interfaces in the device are up and functioning so it can attempt
-//     * to contact the Cisco licensing receiver.
-//     * <li>the config has been parsed. This is important because the agent needs
-//     * to know if the SmartAgentEnable and SmartAgentIdTokenRegister are called
-//     * as a result of the config being parsed at boot time or because the user
-//     * used the CLI.
-//     */
-//    public void isInit();
-
-    /**
-     * Shuts down the PI interface to the agent.
-     * <p>
-     * This is the last call the agent will make before it shuts down to free
-     * any resources allocated by init method.
-     */
-    public void shutdown();
 
     /**
      * Gets the hostname string for the device.

@@ -84,7 +84,12 @@ public interface ICommunication {
      * Shuts down the communications layer.
      * <p>
      * This will be called if the agent is disabled or shut down gracefully.
+     * 
+     * @throws SmartAgentException
+     *             The exception is thrown when error occurs in the operation.
+     *             getStatusCode() method in the exception will return the
+     *             status code.
      */
-    public void shutdown();
+    public void shutdown() throws SmartAgentException ;
 
 }

@@ -12,7 +12,7 @@ public class SmartAgentException extends Exception {
     /**
      * Constructor of the exception.
      * 
-     * @param statuCode
+     * @param statuCode Status code of the exception.
      */
     public SmartAgentException(SmartAgentStatusCode statuCode) {
         super();

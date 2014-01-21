@@ -1,0 +1,101 @@
+h1. Agent States and Modes 
+
+h2. Un\-Configured state
+
+    Smart licensing is not enabled.
+    Most API calls return SmartAgentErrorNotEnabled.
+    Customer can use the 'license smart enable' CLI to enter the Un\-Identified state
+
+h2. Un\-Identified state
+
+    Also sometimes called the un\-registered state.
+    Smart licensing has been enabled but we have not yet contacted Cisco to register.
+    Customer should use the 'license smart register' CLI to register with Cisco.
+    The Agent will remain in this state until successful registration with the Cisco licensing authority.
+    This is also evaluation mode where the 90 day evaluation period will be used. see Evaluation mode below
+
+h2. Registered state
+
+    The agent has contacted the Cisco licensing authority and registered.
+    It has received an Id certificate that will be used for future communications with the Cisco licensing authority. The Id certificate is good for one year. See the Id Certificate below.
+    When entering the registered state the agent will automatically send an Entitlement Authorization request to the Cisco licensing authority for all entitlements that have been requested via the SmartAgentRequestEntitlement function. If no entitlements have been requested an empty message will be sent.
+    The agent will continue to run in Evaluation mode until it receives a response to the entitlement authorization request.
+    After the agent receives the register response it will go to either the Authorized state or Out Of Compliance (OOC) state.
+
+h2. Authorized state
+
+    Also known as the In compliance state.
+    The agent enters this state when it receives a in compliance status in response to an entitlement authorization request to the Cisco licensing authority.
+    The authorization usually has a lifetime of 90 days.
+    At the end of 30 days the agent will send a new entitlement authorization request to the Cisco licensing authority to renew the authorization. see Entitlement Authorization request below.
+
+h2. Out Of Compliance (OOC) state
+
+    The agent enters this state when it receives an Out of Compliance (OOC) status in response to an Entitlement Authorization request to the Cisco licensing authority.
+    In this state the customer is out of compliance with their contract.
+    They have either used too many licenses /entitlements or they are not authorized to use a particular entitlement tag.
+    Notifications will be sent to all applications using the entitlement tag that it is out of compliance.
+    A Syslog message will be sent indicating which entitlements are out of compliance.
+    An SNMP trap will be sent indicating which entitlements are out of compliance.
+    Since each device renews it's authorization every 30 days all devices using a pool that is out of compliance will get an OOC reply within the next 30 days.
+
+h2. Expired state
+
+    The agent enters this state after an extended period of non\-communication with Cisco.
+    See Agent communications failures & grace period below.
+
+h2. Evaluation mode
+
+Evaluation mode is used if the device has not contacted Cisco and registered. In this mode there is a 90 day evaluation period. If entitlements are in use then the evaluation timer will be started. This will be 90 days of usage and not 90 calendar days.
+
+There is one evaluation period for the entire device it is not per entitlement.
+
+When entering this mode if there is still evaluation time left the agent will send an SmartAgentNotifyEnforcementMode notification with the mode SmartAgentEnforceModeEval. If the evaluation period has already been exhausted it will send an SmartAgentNotifyEnforcementMode notification with the mode SmartAgentEnforceModeEvalExpired.
+
+When the evaluation time counts down to is zero the agent will send an SmartAgentNotifyEnforcementMode notification with the mode SmartAgentEnforceModeEvalExpired. It will also log the error with syslog.
+
+The count down time is saved in trusted storage and so is maintained across reboots.
+
+The evaluation timer will stop counting down when one of the following happens:
+
+    Smart Licensing is disabled from the CLL
+    All entitlements are released
+    The Agent receives a successful response to an entitlement authorization request sent to the Cisco licensing authority and enters the Authorized or OOC state.
+
+h2. Entitlement Authorization request
+
+First a note; this has also been called an AUTH or MMI request. After a device has connected to Cisco and registered it will request an authorization for all the entitlements that are in use. If no entitlements have been requested it will send an empty entitlement authorization message. The Cisco licensing authority will return one of a few statuses listed below. If the status returned causes a state change the agent will will send notification to the platform.
+
+*    In Compliance
+        Everything is fine
+        If the previous status was not in compliance the agent will send an SmartAgentNotifyEnforcementMode notification with the mode SmartAgentEnforceModeInCompliance
+*    Overage
+        Every contract will have a built in overage allowance which is more than they purchased but does not put them into the out of compliance state.
+        This is informational only and no action should be taken on the device.
+*    Out Of Compliance (OOC)
+        The customer is using more licenses than they have purchased and more than the built in overage allows. The entire pool is out of compliance.
+        Since each device renews it's authorization every 30 days all devices using a pool that is out of compliance will get an OOC reply within the next 30 days.
+        The device can stay out of compliance forever
+        The agent will log the error with syslog
+        If the previous status was not out of compliance the agent will send an SmartAgentNotifyEnforcementMode notification with the mode SmartAgentEnforceModeOutOfCompliance
+    Deactivate
+        Cisco has decided we don't want to do business with this customer again so turn off their network. This is something that is unlikely to happen and would only occur after Cisco has taken legal action against a former customer.
+        The agent will send an SmartAgentNotifyEnforcementMode notification with the mode SmartAgentEnforceModeDisabled
+        The agent will go to the Un\-Configured state and send a global notification of the type SmartAgentNotifyDisabled
+        The agent will log the error with syslog.
+
+h2. Agent communications failures & grace period
+
+Under normal conditions the device will contact Cisco every 30 days to renew its entitlement authorizations. If it fails to communicate with Cisco for 90 days it will go into the grace period mode and send an SmartAgentNotifyEnforcementMode notification with the mode SmartAgentEnforceModeGracePeriod
+grace period
+
+Grace period lasts for 90 days. If at the end of 90 days the device still cannot contact Cisco it will go into the expired state and send an SmartAgentNotifyEnforcementMode notification with the mode SmartAgentEnforceModeGracePeriodExpired. This means the device has not contacted Cisco for about 180 days.
+
+While in grace period and in the expired state the device will continue to try to contact Cisco, to renew the entitlement authorization, until the id certificate expires.
+
+If the agent re\-establishes communications with Cisco and receives a reply to the Entitlement Authorization request it will process that reply normally.
+
+For any communications failure the agent will log the error with syslog.
+Id Certificate
+
+The Id certificate expires at the end of one year. After 6 months the agent will try to renew the certificate. If the Agent cannot communicate with the Cisco licensing authority it will continue to try and renew the Id certificate until the expiration date (1 year). At the end of one year the agent will go back to the Un\-Identified state and will try to enable the Evaluation mode.
