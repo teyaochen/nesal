@@ -8,10 +8,10 @@ java_import 'com.cisco.nesal.plugin.IPlatformIndependent'
 class RubySample
 
 
-    java_signature 'RubySample(double, double)'
-    def initialize(x, y)
-
-    end
+#    java_signature 'RubySample(double, double)'
+#    def initialize(x, y)
+#
+#    end
 
     java_signature 'void configure(ICommunication commImpl, 
                           IPlatformIndependent piImpl,
@@ -28,5 +28,4 @@ class RubySample
     end
 end
 
-x = RubySample.new
-puts x(1,2)
+

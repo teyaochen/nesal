@@ -15,7 +15,7 @@ public class RubySampleTest {
     public void test() {
         
         // Remove these test code
-        RubySample rubySample = new RubySample(1.0, 2.0);
+        RubySample rubySample = new RubySample();
         
         ICrypto cryptoImpl = null;
         IPlatformIndependent piImpl = null;

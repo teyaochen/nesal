@@ -21,7 +21,6 @@
 			<item name="Overview" href="index.html" />
 			<item name="Design Considerations" href="design-considerations.html" />
 			<item name="Design Diagrams" href="design-diagrams.html" />
-			<item name="Agent States and Modes" href="state-machine.html" />
 			<item name="API Docs" href="apidocs.html">
 				<item name="Java API" href="apidocs/index.html" />
 				<item name="Ruby API" href="under-construction.html" />

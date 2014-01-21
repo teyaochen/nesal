@@ -27,10 +27,10 @@ public class RubySample extends RubyObject  {
             "class RubySample\n" +
             "\n" +
             "\n" +
-            "    java_signature 'RubySample(double, double)'\n" +
-            "    def initialize(x, y)\n" +
-            "\n" +
-            "    end\n" +
+            "#    java_signature 'RubySample(double, double)'\n" +
+            "#    def initialize(x, y)\n" +
+            "#\n" +
+            "#    end\n" +
             "\n" +
             "    java_signature 'void configure(ICommunication commImpl, \n" +
             "                          IPlatformIndependent piImpl,\n" +
@@ -47,10 +47,9 @@ public class RubySample extends RubyObject  {
             "    end\n" +
             "end\n" +
             "\n" +
-            "x = RubySample.new\n" +
-            "puts x(1,2)\n" +
+            "\n" +
             "").toString();
-        __ruby__.executeScript(source, "/home/tychen/GitForNESAL/nesal/src/main/ruby/sample.rb");
+        __ruby__.executeScript(source, "/home/tychen/nesal/src/main/ruby/sample.rb");
         RubyClass metaclass = __ruby__.getClass("RubySample");
         if (metaclass == null) throw new NoClassDefFoundError("Could not load Ruby class: RubySample");
         metaclass.setRubyStaticAllocator(RubySample.class);
@@ -79,13 +78,14 @@ public class RubySample extends RubyObject  {
         return new RubySample(ruby, metaClass);
     }
 
-    
-    public  RubySample(double x, double y) {
+    /**
+     * Default constructor. Invokes this(Ruby, RubyClass) with the classloader-static
+     * Ruby and RubyClass instances assocated with this class, and then invokes the
+     * no-argument 'initialize' method in Ruby.
+     */
+    public RubySample() {
         this(__ruby__, __metaclass__);
-        IRubyObject ruby_arg_x = JavaUtil.convertJavaToRuby(__ruby__, x);
-        IRubyObject ruby_arg_y = JavaUtil.convertJavaToRuby(__ruby__, y);
-        Helpers.invoke(__ruby__.getCurrentContext(), this, "initialize", ruby_arg_x, ruby_arg_y);
-
+        Helpers.invoke(__ruby__.getCurrentContext(), this, "initialize");
     }
 
     

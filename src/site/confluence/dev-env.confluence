@@ -18,6 +18,8 @@ Refer to [Smart Agent Development Environment Page|http://wikicentral.cisco.com/
 
 h2. 2) Workspace Setup
 
+* Install Java 7 on your Linux if you haven't.
+
 * Download [Maven 3|http://maven.apache.org/index.html] and install it on Linux.
 
 * Download [JRuby 1.7.9|http://www.jruby.org/download] and install it on Linux.
@@ -36,13 +38,33 @@ mvn install
 
 h2. 3) IDE Setup
 
-* Install Eclipse for Java EE
+* Install Eclipse for Java EE (Kepler release).
 
-* Import Maven project in Eclipse
+* From Eclipse, select "File->Import", chose "Existing Maven Project", browse to 
+  "nesal" directory of and click "Finish".
 
 h2. 4) Additional Notes for Ruby
 
-* Ruby source code should be placed in nesal/src/main/ruby directory and will be compiled to Java source code after running "mvn compile".
+Compile Ruby script to Java source code:
+ 
+* Create Ruby scripts in nesal/src/main/ruby directory.
+* Add "java_package" and "java_signature" in the Ruby script, for example:
+
+{code}
+require 'java'
+java_package 'com.cisco.nesal.internal'
+
+class RubySample
+
+    java_signature 'void bar(int, int)'
+    def bar(a,b)
+        puts a + b
+    end
+end
+{code}
+
+* Run "mvn compile". The generated Java source code will be saved in nesal/src/main/java/com/cisco/nesal/internal.
+
 
 
 

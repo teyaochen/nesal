@@ -11,3 +11,13 @@ h2. 2. Deploy Diagram
 The following UML deployment diagram models the physical deployment of artifacts at the runtime:
 
 !images/NESALDeployment.png|border=2!
+
+\\
+h2. 3. State Machine Diagram
+
+The following State Machine diagram illustrates the state and transition of entitlement life cycle. Detailed description of the diagrame can be found in [http://wwwin-swpkg.cisco.com/smartlic/smart-agent-c/agent_state_modes.html]
+\\
+\\
+\\
+!images/AgentStateDiagram_1.png|border=2!
+
